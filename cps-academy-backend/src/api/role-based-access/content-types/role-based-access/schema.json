@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "role_based_accesses",
+  "info": {
+    "singularName": "role-based-access",
+    "pluralName": "role-based-accesses",
+    "displayName": "Role-based Access"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "accessible_content": {
+      "type": "json"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "role_based_accesses"
+    }
+  }
+}
