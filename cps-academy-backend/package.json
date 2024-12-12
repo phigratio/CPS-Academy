@@ -7,13 +7,16 @@
     "build": "strapi build",
     "deploy": "strapi deploy",
     "develop": "strapi develop",
+    "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.4.2",
-    "@strapi/plugin-users-permissions": "5.4.2",
-    "@strapi/strapi": "5.4.2",
+    "@strapi/plugin-cloud": "5.5.0",
+    "@strapi/plugin-users-permissions": "5.5.0",
+    "@strapi/strapi": "5.5.0",
+    "fs-extra": "^10.0.0",
+    "mime-types": "^2.1.27",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -26,6 +29,6 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "5b913540-fecf-4e3c-91f6-19dbaf1e2cd1"
+    "uuid": "87cb29f1-2972-462d-9ef8-3a3b6c41e0b2"
   }
 }
