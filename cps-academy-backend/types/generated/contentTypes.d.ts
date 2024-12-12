@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
+    description: '';
     displayName: 'Course';
     pluralName: 'courses';
     singularName: 'course';
@@ -390,16 +391,12 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
       'api::course.course'
     > &
       Schema.Attribute.Private;
-    modules: Schema.Attribute.Relation<'oneToMany', 'api::module.module'>;
+    modules: Schema.Attribute.Relation<'manyToMany', 'api::module.module'>;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 
@@ -415,58 +412,24 @@ export interface ApiModuleModule extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    course: Schema.Attribute.Relation<'manyToOne', 'api::course.course'>;
+    courses: Schema.Attribute.Relation<'manyToMany', 'api::course.course'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    details: Schema.Attribute.Text;
+    Details: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::module.module'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
     number_of_classes: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
     topics_covered: Schema.Attribute.JSON;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiRoleBasedAccessRoleBasedAccess
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'role_based_accesses';
-  info: {
-    displayName: 'Role-based Access';
-    pluralName: 'role-based-accesses';
-    singularName: 'role-based-access';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    accessible_content: Schema.Attribute.JSON;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::role-based-access.role-based-access'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 
@@ -957,10 +920,6 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    role_based_accesses: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::role-based-access.role-based-access'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -985,7 +944,6 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::course.course': ApiCourseCourse;
       'api::module.module': ApiModuleModule;
-      'api::role-based-access.role-based-access': ApiRoleBasedAccessRoleBasedAccess;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

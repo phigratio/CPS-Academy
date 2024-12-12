@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "Title": {
       "type": "string"
     },
-    "details": {
+    "Details": {
       "type": "text"
     },
     "number_of_classes": {
@@ -24,9 +24,9 @@
     "topics_covered": {
       "type": "json"
     },
-    "course": {
+    "courses": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::course.course",
       "inversedBy": "modules"
     }
