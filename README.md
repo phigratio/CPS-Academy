@@ -108,11 +108,3 @@ CPS Academy aims to simplify the management of academic activities through a rob
 ## Contributing
 
 Feel free to fork the project and submit pull requests for improvements or new features. Ensure that all new code is covered by tests and follows the existing code style.
-
----
-
-## Contact
-
-For questions or feedback, please contact [[your_email@example.com](mailto:muqtadir.mujahid02@gmail.com)].
-
-Md Abdul Muqtadir
