@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import { useState, useEffect } from "react";
 import {
@@ -82,7 +83,11 @@ const callsToAction = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const router = useRouter();
 
+  const handleProfileClick = () => {
+    router.push("/about");
+  };
   useEffect(() => {
     const updateLoginState = () => {
       const jwt = localStorage.getItem("jwt");
@@ -221,7 +226,9 @@ export default function Header() {
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Courses</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleProfileClick}>
+                  Profile
+                </DropdownMenuItem>
                 <DropdownMenuItem>Progress Report</DropdownMenuItem>
                 <DropdownMenuItem onClick={handleLogOut}>
                   Logout
