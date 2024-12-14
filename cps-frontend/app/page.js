@@ -15,7 +15,7 @@ export default async function Home() {
       <Header />
       <Banner />
       <div className="container py-10">
-        <h1 className="text-3xl font-semibold py-5">Popular Courses</h1>
+        <h1 className="text-3xl font-semibold py-5 px-5">Popular Courses</h1>
         <CoursesList courses={getCourse} />
       </div>
       <Testimonial />

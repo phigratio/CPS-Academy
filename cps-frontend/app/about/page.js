@@ -27,7 +27,7 @@ const AboutPage = () => {
           "http://localhost:1337/api/users/me?populate=*",
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
             },
           }
         );
@@ -39,7 +39,7 @@ const AboutPage = () => {
         const data = await response.json();
         setUserData(data);
       } catch (error) {
-        console.error(error);
+        console.log(error);
         alert("Failed to load user data");
       }
     };
@@ -63,7 +63,7 @@ const AboutPage = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
           },
         }
       );
@@ -73,7 +73,7 @@ const AboutPage = () => {
       setNewPassword("");
       setConfirmPassword("");
     } catch (error) {
-      console.error(error);
+      console.log(error);
       alert("Failed to change password");
     }
   };
@@ -100,7 +100,7 @@ const AboutPage = () => {
         </p>
 
         <div className="flex gap-4 mb-4">
-          {userData.role.type === "social-media-manager" && (
+          {userData.role.name === "Social Media Manager" && (
             <Button
               variant="primary"
               onClick={() => router.push("/manage-roles")}
