@@ -43,7 +43,7 @@ CPS Academy aims to simplify the management of academic activities through a rob
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url> cps-academy-backend
+   git clone https://github.com/phigratio/CPS-Academy.git cps-academy-backend
    cd cps-academy-backend
    ```
 2. Install dependencies:
@@ -61,7 +61,7 @@ CPS Academy aims to simplify the management of academic activities through a rob
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url> cps-frontend
+   git clone https://github.com/phigratio/CPS-Academy.git cps-frontend
    cd cps-frontend
    ```
 2. Install dependencies:
