@@ -43,8 +43,8 @@ CPS Academy aims to simplify the management of academic activities through a rob
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url> cps-backend
-   cd cps-backend
+   git clone <repository-url> cps-academy-backend
+   cd cps-academy-backend
    ```
 2. Install dependencies:
    ```bash
