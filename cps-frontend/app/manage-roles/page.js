@@ -74,7 +74,6 @@ const ManageRoles = () => {
             <tr className="bg-gray-100 text-gray-700 uppercase text-sm leading-normal">
               <th className="py-3 px-6 text-left">Name</th>
               <th className="py-3 px-6 text-left">Email</th>
-              <th className="py-3 px-6 text-left">Current Role</th>
               <th className="py-3 px-6 text-center">Actions</th>
             </tr>
           </thead>
@@ -90,10 +89,7 @@ const ManageRoles = () => {
                 <td className="py-3 px-6 text-left whitespace-nowrap">
                   {user.email}
                 </td>
-                <td className="py-3 px-6 text-left">
-                  {roles.find((role) => role.id === user.role?.id)?.name ||
-                    "No Role"}
-                </td>
+
                 <td className="py-3 px-6 text-center">
                   <select
                     className="border border-gray-300 rounded-md px-2 py-1 text-sm"

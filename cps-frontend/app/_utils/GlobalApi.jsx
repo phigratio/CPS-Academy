@@ -13,7 +13,7 @@ const fetchRoles = async (token) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching roles:", error);
+    console.log("Error fetching roles:", error);
     throw error;
   }
 };
@@ -74,7 +74,7 @@ const updateUserRole = async (userId, newRole, token) => {
     // Return the response data
     return response.data;
   } catch (error) {
-    console.error("Error updating user role:", {
+    console.log("Error updating user role:", {
       message: error.message,
       response: error.response?.data,
       status: error.response?.status,
@@ -114,6 +114,24 @@ const loginUser = async (email, password) => {
   return token;
 };
 
+// Register a new user
+const registerUser = async (username, email, password) => {
+  try {
+    const response = await axiosClient.post("/auth/local/register", {
+      username,
+      email,
+      password,
+    });
+
+    return response.data; // Return the user data and JWT from Strapi
+  } catch (error) {
+    console.log("Error registering user:", error);
+
+    // Handle specific errors if needed
+    throw error; // Rethrow the error for handling in the calling function
+  }
+};
+
 export default {
   getCourse,
   getCourseById,
@@ -121,4 +139,5 @@ export default {
   fetchUsers,
   updateUserRole,
   fetchRoles,
+  registerUser,
 };
